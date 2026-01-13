@@ -165,3 +165,68 @@ Contains:
 -embedding files
 
 -metadata dictionary
+
+## Task 3: RAG Pipeline & Evaluation
+
+### **RAGPipeline**
+- Retrieves relevant complaint chunks from FAISS based on a user query.
+- Uses a **prompt template** to guide the LLM in generating answers.
+- Supports generating answers from **top-k (default k=5)** most relevant chunks.
+
+### **Qualitative Evaluation**
+- Created a list of **representative questions** the system should answer well:
+  
+What issues do customers report about credit card billing?
+
+How do customers describe problems with personal loans?
+
+Which companies have the most complaints about account management?
+
+What are the main complaints regarding mortgage services?
+
+Are there recurring issues related to bank fees?
+
+How do customers report problems with credit reporting agencies?
+
+What sub-issues are most common in debt collection complaints?
+
+Are there specific states where complaints about credit cards are higher?
+
+- Evaluated the system on these questions.
+- Produced a **Markdown evaluation table** with:
+- Question  
+- Generated Answer  
+- Retrieved Sources (top 1-2)  
+- Quality Score (1-5)  
+- Comments/Analysis  
+
+Example table (Markdown):
+
+| Question | Generated Answer | Retrieved Sources (Top 1-2) | Quality Score | Comments/Analysis |
+|----------|----------------|------------------------------|---------------|-----------------|
+| What issues do customers report about credit card billing? | Customers report billing disputes, unexpected fees... | 1. “Customer reports unauthorized charges on credit card” 2. “Billing errors for monthly statements” | 4 | Good coverage of main billing issues, minor fee details missing |
+
+---
+
+## Task 4: Interactive Gradio Chat Interface
+
+- Built a **user-friendly web app** using Gradio.
+- Features:
+- Text input for user questions.
+- Submit/Ask button to query the RAG pipeline.
+- Display of generated answer.
+- Display of **top 2 retrieved source chunks** below the answer for transparency.
+- Clear button to reset conversation.
+- Optional token-by-token streaming (for improved UX).
+
+### **Usage**
+1. Launch the app:
+```bash
+python app.py
+2. Type your question in the input box.
+
+3 .Click Ask.
+
+4 .View the answer and the retrieved sources.
+
+5 .Click Clear to reset.
