@@ -1,3 +1,4 @@
 data/
 .venv/
 notebooks/vector_store/
+notebooks/data/faiss
